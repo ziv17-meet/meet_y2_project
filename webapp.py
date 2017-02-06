@@ -31,30 +31,7 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def show_homepage():
-	if request.method == 'POST':
-			category=request.form['catagory']
-			ingredients_list=[request.form['ingredient1'], request.form['ingredient2'], request.form['ingredient3']]
-			ingredients='<delim>'.join(ingredients_list)
-			images=request.form['images']
-			special=request.form['special']
-			instructors_list=[request.form['instructor1'], request.form['instructor2'], request.form['instructor3']]
-			instuctors='<delim>'.join(instructor_list)
-			caption=request.form['caption']
-
-
-			rec = Recipes(category=category, ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, images=images, special=specia, instuctor1=instuctor1, instructor2=instructor2, instructor3=instructor3, caption=caption)
-			session.add(rec)
-			session.commit()
-			if category == 'dessert':
-				return render_template("dessert.html", rec=rec)
-			if category == 'main_dish':
-				return render_template("main_dish.html", rec=rec)
-			if category == 'appetizers':
-				return render_template("appetizers.html", rec=rec)
-			else:
-				return render_template("upload.html")
-	else:
-		return render_template("recipes.html")
+	
 
 
 
@@ -92,19 +69,27 @@ def desserts():
 @app.route("/upload", methods = ['GET', 'POST']  )
 def upload():
 	if request.method == 'POST':
-		catagory=request.form['catagory']
-		ingredients_list=[request.form['ingredient1'], request.form['ingredient2'], request.form['ingredient3']]
-		ingredients='<delim>'.join(ingredients_list)
-		images=request.form['images']
-		special=request.form['special']
-		instructors_list=[request.form['instructor1'], request.form['instructor2'], request.form['instructor3']]
-		instuctors='<delim>'.join(instructor_list)
-		caption=request.form['caption']
+			category=request.form['catagory']
+			ingredients_list=[request.form['ingredient1'], request.form['ingredient2'], request.form['ingredient3']]
+			ingredients='<delim>'.join(ingredients_list)
+			images=request.form['images']
+			special=request.form['special']
+			instructors_list=[request.form['instructor1'], request.form['instructor2'], request.form['instructor3']]
+			instuctors='<delim>'.join(instructor_list)
+			caption=request.form['caption']
 
-		rec = Recipes(category=category, ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, images=images, special=specia, instuctor1=instuctor1, instructor2=instructor2, instructor3=instructor3, caption=caption)
-		session.add(rec)
-		session.commit()
-		return render_template("upload.html", rec=rec)
+
+			rec = Recipes(category=category, ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, images=images, special=specia, instuctor1=instuctor1, instructor2=instructor2, instructor3=instructor3, caption=caption)
+			session.add(rec)
+			session.commit()
+			if category == 'dessert':
+				return render_template("dessert.html", rec=rec)
+			if category == 'main_dish':
+				return render_template("main_dish.html", rec=rec)
+			if category == 'appetizers':
+				return render_template("appetizers.html", rec=rec)
+			else:
+				return render_template("upload.html")
 	else:
 		return render_template("upload.html")
 
