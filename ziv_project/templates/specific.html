@@ -1,0 +1,81 @@
+<DOCTYPE! html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title> </title>
+	<style> u
+
+  li {
+    float: left;
+}
+
+	</style>
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FOOD</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{{url_for('show_homepage')}}">Home</a></li>
+  <li><a href="{{url_for('about_us')}}">about us</a></li>
+      <li><a href="{{url_for('upload')}}">upload</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">catagories<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{url_for('desserts')}}">desserts</a></li>
+          <li><a href="{{url_for('main_dish')}}">main dishes</a></li>
+          <li><a href="{{url_for('appetizers')}}">appetizers</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+       
+
+<center>{{ spec.images }}</center>
+
+ 
+<div class="container">
+  <h2>Ingredients</h2>
+  <ul class="list-group">
+  {{% for a in spec.ingredients.split('<delim>') %}}
+    <li class="list-group-item">{{ a }}</li>
+    {{% endfor %}}
+
+  </ul>
+</div>
+<div class="container">
+  <h2>Instructors</h2>
+  <ul class="list-group">
+   # make a forloop
+  {{% for b in spec.instructors.split('<delim>') %}}
+    <li class="list-group-item">{{ b }}</li>
+    {{% endfor %}}
+
+  </ul>
+</div>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="comment">{{ spec.comments }}:</label>
+      <textarea class="form-control" rows="3" id="comment"></textarea>
+    </div>
+  </form>
+</div>
+
+<!--<span class="likebtn-wrapper" data-identifier="item_1" data-show_dislike_label="true"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+ LikeBtn.com END -->
+
+
+</body>
+</html>
