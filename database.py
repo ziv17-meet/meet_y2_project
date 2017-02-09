@@ -37,3 +37,6 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+rec = Recipes(category="dessert", ingredients="milk", images="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQbZA8e_i5u3u2xLuZg8xWaZ6GuMgJhnUEfxJFRC9hMKwKWy8cT3w", special="viggen", instructors="mix", caption="eat")
+session.add(rec)
+session.commit()

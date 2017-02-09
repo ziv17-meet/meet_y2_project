@@ -41,9 +41,13 @@ def show_homepage():
 def about_us():
 	return render_template("about_us.html")
 
-@app.route("/main_dish")
+
+@app.route("/main_dish", methods = ['GET', 'POST'])
 def main_dish():
-	return render_template("main_dish.html")
+	main_dish_recipes = session.query(Recipes).filter_by(category="main_dish").all()
+	return render_template("main_dish.html", main_dish_recipes=main_dish_recipes)
+
+
 
 @app.route("/appetizers")
 def appetizers():
@@ -51,8 +55,8 @@ def appetizers():
 
 @app.route("/specific/<int:id>/")
 def specific(id):
-	spec = session.query(Recipes).filter_by(id=id).first()
-	return render_template("specific.html", spec=spec)
+	rec = session.query(Recipes).filter_by(id=id).all()
+	return render_template("specific.html", rec=rec)
 
 
 
@@ -68,26 +72,24 @@ def desserts():
 
 @app.route("/upload", methods = ['GET', 'POST']  )
 def upload():
+
 	if request.method == 'POST':
-			category=request.form['catagory']
-			ingredients_list=[request.form['ingredient1'], request.form['ingredient2'], request.form['ingredient3']]
-			ingredients='<delim>'.join(ingredients_list)
-			images=request.form['images']
-			special=request.form['special']
-			instructors_list=[request.form['instructor1'], request.form['instructor2'], request.form['instructor3']]
-			instuctors='<delim>'.join(instructor_list)
+			category=request.form['category']
+			ingredients=request.form['ingredients']
+			#special=request.form['special']
+			instructors=request.form['instructors']
 			caption=request.form['caption']
 
 
-			rec = Recipes(category=category, ingredient1=ingredient1, ingredient2=ingredient2, ingredient3=ingredient3, images=images, special=specia, instuctor1=instuctor1, instructor2=instructor2, instructor3=instructor3, caption=caption)
+			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption)
 			session.add(rec)
 			session.commit()
 			if category == 'dessert':
-				return render_template("dessert.html", rec=rec)
+				return redirect("desserts")
 			if category == 'main_dish':
-				return render_template("main_dish.html", rec=rec)
+				return redirect("main_dish")
 			if category == 'appetizers':
-				return render_template("appetizers.html", rec=rec)
+				return redirect("appetizers")
 			else:
 				return render_template("upload.html")
 	else:

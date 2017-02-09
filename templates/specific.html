@@ -41,35 +41,30 @@
 
        
 
-<center>{{ spec.images }}</center>
+<center>{{ rec.images }}</center>
 
  
 <div class="container">
   <h2>Ingredients</h2>
   <ul class="list-group">
-  {{% for a in spec.ingredients.split('<delim>') %}}
-    <li class="list-group-item">{{ a }}</li>
-    {{% endfor %}}
+    <li>{{rec.ingredients}}</li>
 
   </ul>
 </div>
 <div class="container">
   <h2>Instructors</h2>
   <ul class="list-group">
-   # make a forloop
-  {{% for b in spec.instructors.split('<delim>') %}}
-    <li class="list-group-item">{{ b }}</li>
-    {{% endfor %}}
+    <li>{{ rec.instructors }}</li>
 
   </ul>
 </div>
 <div class="container">
-  <form>
+  <h2>comments</h2>
+
     <div class="form-group">
-      <label for="comment">{{ spec.comments }}:</label>
-      <textarea class="form-control" rows="3" id="comment"></textarea>
+    <li>{{rec.comments}}</li>
+
     </div>
-  </form>
 </div>
 
 <!--<span class="likebtn-wrapper" data-identifier="item_1" data-show_dislike_label="true"></span>

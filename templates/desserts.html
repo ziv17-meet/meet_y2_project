@@ -49,7 +49,6 @@
   <h2>Desserts Recipes</h2>
   {% for recipe in desserts_recipes %}
   <div class="row 5">
-    <div class="col-md-3">
       <div class="thumbnail cool">
           <a href="{{url_for('specific', id=recipe.id)}}">
           <img src="{{ recipe.images }}">
