@@ -1,7 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
-from wtforms import *
-from flask_wtf import Form
+#from wtforms import *
+#from flask_wtf import Form
 #from flask_sqlalchemy import SQLAlchemy
 #from werkzeug.utils import secure_filename
 #import hashlib
