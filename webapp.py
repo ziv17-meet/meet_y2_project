@@ -42,28 +42,74 @@ def about_us():
 	return render_template("about_us.html")
 
 
+
 @app.route("/main_dish", methods = ['GET', 'POST'])
 def main_dish():
 	main_dish_recipes = session.query(Recipes).filter_by(category="main_dish").all()
 	return render_template("main_dish.html", main_dish_recipes=main_dish_recipes)
 
+	if request.method == 'POST':
+
+		special=request.form['special']
+
+		if special == 'suggar_free':
+			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
+			return render_template("main_dish.html", filter_suggar=filter_suggar)
+		if special == 'glutten_free':
+			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
+			return render_template("main_dish.html", filter_glutten=filter_glutten)
+		if special == 'viggen':
+			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
+			return render_template("main_dish.html", filter_viggen=filter_viggen)
+		else:
+			return render_template("main_dish.html")
+	else:
+		return render_template("main_dish.html")
 
 
 @app.route("/appetizers")
 def appetizers():
-	return render_template("appetizers.html")
+	appetizers_recipes = session.query(Recipes).filter_by(category="appetizers").all()
+	return render_template("appetizers.html", appetizers_recipes=appetizers_recipes)
 
 @app.route("/specific/<int:id>/")
 def specific(id):
 	rec = session.query(Recipes).filter_by(id=id).all()
 	return render_template("specific.html", rec=rec)
+	if request.method == 'POST':
+			comments=request.form['comments']
+			rec = Recipes(comments=comments)
+			session.add(rec)
+			session.commit()
+			return render_template("specific.html", rec=rec)
 
+	else:
+		return render_template("upload.html")
 
 
 @app.route("/desserts", methods = ['GET', 'POST'])
 def desserts():
 	desserts_recipes = session.query(Recipes).filter_by(category="dessert").all()
 	return render_template("desserts.html", desserts_recipes=desserts_recipes)
+	if request.method == 'POST':
+		special=request.form['special']
+		rec = Recipes(special=special)
+		session.add(rec)
+		session.commit()
+		if special == 'suggar_free':
+			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
+			return render_template("desserts.html", filter_suggar=filter_suggar)
+		if special == 'glutten_free':
+			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
+			return render_template("desserts.html", filter_glutten=filter_glutten)
+		if special == 'viggen':
+			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
+			return render_template("desserts.html", filter_viggen=filter_viggen)
+		else:
+			return render_template("desserts.html")
+	else:
+		return render_template("desserts.html")
+
 
 #@app.route("/desserts/<string:specialty>/")
 #def desserts(specialty):
@@ -76,12 +122,12 @@ def upload():
 	if request.method == 'POST':
 			category=request.form['category']
 			ingredients=request.form['ingredients']
-			#special=request.form['special']
+			special=request.form['special']
 			instructors=request.form['instructors']
 			caption=request.form['caption']
 
 
-			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption)
+			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption, special=special)
 			session.add(rec)
 			session.commit()
 			if category == 'dessert':

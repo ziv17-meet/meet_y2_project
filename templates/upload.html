@@ -24,26 +24,26 @@
       <a class="navbar-brand" href="#">FOOD</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="{{url_for('show_homepage')}}">Home</a></li>
-  <li><a href="{{url_for('about_us')}}">about us</a></li>
-      <li><a href="{{url_for('upload')}}">upload</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">catagories<span class="caret"></span></a>
-        <ul class="dropdown-menu">
+    <li><a href="{{url_for('show_homepage')}}">Home</a></li>
+    <li><a href="{{url_for('about_us')}}">about us</a></li>
+    <li><a href="{{url_for('upload')}}">upload</a></li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">catagories<span class="caret"></span></a>
+    <ul class="dropdown-menu">
           <li><a href="{{url_for('desserts')}}">desserts</a></li>
-          <li><a href="#">main dishes</a></li>
-          <li><a href="#">appetizers</a></li>
-        </ul>
-      </li>
-
+          <li><a href="{{url_for('main_dish')}}">main dishes</a></li>
+          <li><a href="{{url_for('appetizers')}}">appetizers</a></li>
+    </ul>
+    </li>
     </ul>
   </div>
 </nav>
 <center><h1><b> Add Your Own Recepies!</b></h1></center>
+
 <form action="{{ url_for('upload') }}" method = 'post'>
 
 <div class="col-md-9">
-<div class="container">
-<div class="category">
+  <div class="container">
+    <div class="category">
     <label class="radio-inline">
       <input type="radio" name="category" value="dessert"> Desserts
     </label>
@@ -53,41 +53,40 @@
     <label class="radio-inline">
       <input type="radio" name="category" value="appetizers">appetizers
     </label>
-</div>
-
-<div class="col-md-3"></div>
-</div>
-</div>
-
-<div class="row 5">
-<div class="col-md-9">
-<div class="container">
-<div class="ingredients">
-<h2>Ingredients</h2>
-<ul class="list-group">
-<input type="text" name="ingredients" class="list-group-item"></li>
-</ul>
-</div>
-</div>
-<div class="col-md-3"></div>
-</div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 </div>
 
 
 <div class="row 5">
-<div class="col-md-9">
-<div class="container">
-<div class="images">
-<h2>Caption</h2>
-<ul class="list-group">
-<input type="text" name="caption" class="list-group-item"></li>
-</ul>
-</div>
-</div>
-<div class="col-md-3"></div>
-</div>
+  <div class="col-md-9">
+    <div class="container">
+      <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul class="list-group">
+        <input type="text" name="ingredients" class="list-group-item"></li>
+      </ul>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 </div>
 
+
+<div class="row 5">
+  <div class="col-md-9">
+    <div class="container">
+      <div class="images">
+      <h2>Caption</h2>
+      <ul class="list-group">
+        <input type="text" name="caption" class="list-group-item"></li>
+      </ul>
+      </div>
+    </div>
+  <div class="col-md-3"></div>
+</div>
+  
 <!--
 <div class="row 5">
 <div class="col-md-9">
@@ -105,36 +104,36 @@
 -->
 
 <div class="row 5">
-<div class="col-md-8">
-<div class="container ">
-<div class="instructors">
-<h2>Instructors</h2>
-<ul class="list-group ">
-<input type="text" name="instructors" class="list-group-item col-xs-7"></li>
-</ul>
+  <div class="col-md-8">
+    <div class="container ">
+      <div class="instructors">
+      <h2>Instructors</h2>
+      <ul class="list-group ">
+        <input type="text" name="instructors" class="list-group-item col-xs-7"></li>
+      </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
 </div>
+
+
+
 </div>
-<div class="col-md-4">
-</div>
-</div>
-</div>
+<h2>special</h2>
 
+<div class="special">
+  <div class="panel panel-default">
+                <!-- Default panel contents -->
 
-
-<div class="row 5">
-<div class="col-md-8">
-<!--
-                <h2>spacial</h2>
-
-            <div class="panel panel-default">
-
-
+            
+                <!-- List group -->
                 <ul class="list-group">
                     <li class="list-group-item">
                         suggar free
                         <div class="material-switch pull-right">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                            <input id="someSwitchOptionPrimary" name="special" type="checkbox" value="suggar_free"/>
                         </div>
                     </li>
                 </ul>
@@ -142,27 +141,23 @@
                     <li class="list-group-item">
                         glutten free
                         <div class="material-switch pull-right">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                            <input id="someSwitchOptionPrimary" name="special" type="checkbox" value="glutten_free"/>
                         </div>
                     </li>
                 </ul>
                   <ul class="list-group">
                     <li class="list-group-item">
-                        vigen
+                        viggen
                         <div class="material-switch pull-right">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                            <input id="someSwitchOptionPrimary" name="special" type="checkbox" value="viggen"/>
                         </div>
                     </li>
                 </ul>
               </div>
-              -->
-    </div>
-   <input type="submit" value="Submit">
-  <div class="col-md-4">
   </div>
-  </div>
+  <input type="submit" value="Submit">
+  <div class="col-md-4">  </div>
+</div>
 </div>
 </div>
 </div>

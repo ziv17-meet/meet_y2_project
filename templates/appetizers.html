@@ -1,14 +1,111 @@
-<DOCTYPE! html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<title> </title>
+  <title>Desserts recipes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+.cool{
+  margin: 5px;
+}
+
+
+
+
+</style>
 </head>
 <body>
-	<h1>appetizers</h1>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FOOD</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{{url_for('show_homepage')}}">Home</a></li>
+  <li><a href="{{url_for('about_us')}}">about us</a></li>
+      <li><a href="{{url_for('upload')}}">upload</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">catagories<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{url_for('desserts')}}">desserts</a></li>
+          <li><a href="{{url_for('main_dish')}}">main dishes</a></li>
+          <li><a href="{{url_for('appetizers')}}">appetizers</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+  
+<div class="container">
+	<center><h2>appetizers Recipes</h2></center>
+	{% for recipe in appetizers_recipes %}
+	<div class="row 5">
+		<div class="thumbnail cool">
+		<a href="{{url_for('specific', id=recipe.id)}}">
+		<img src="{{ recipe.images }}">
+			<div class="caption">
+			{{recipe.caption}}
+			</div>
+		</a>
+	</div>
+    {% endfor %}
+</div>
+
+
+<div class="col-md-8">
+</div>
+<div class="col-md-4">
+<form action='POST'>
+	<div class="panel panel-default">
+                <!-- Default panel contents -->
+
+            
+                <!-- List group -->
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        suggar free
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                        </div>
+                    </li>
+                </ul>
+                      <ul class="list-group">
+                    <li class="list-group-item">
+                        glutten free
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                        </div>
+                    </li>
+                </ul>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                        vigen
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                        </div>
+                    </li>
+                </ul>
+              </div>
+</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
 </body>
 </html>

@@ -46,27 +46,24 @@
 
   
 <div class="container">
-  <h2>Desserts Recipes</h2>
-  {% for recipe in desserts_recipes %}
+<h2>Desserts Recipes</h2>
+{% for recipe in desserts_recipes %}
   <div class="row 5">
-      <div class="thumbnail cool">
-          <a href="{{url_for('specific', id=recipe.id)}}">
-          <img src="{{ recipe.images }}">
-          <div class="caption">
-          {{recipe.caption}}
-
-
-          </div>
-          </a>
-      </div>
-        {% endfor %}
-
+    <div class="thumbnail cool">
+      <a href="{{url_for('specific', id=recipe.id)}}">
+        <img src="{{ recipe.images }}">
+        <div class="caption">
+        {{recipe.caption}}
+        </div>
+      </a>
     </div>
+  </div>
+{% endfor %}
+</div>
 
 <div class="col-md-3">
-<form action='POST'>
-
-            <div class="panel panel-default">
+  <form action='POST'>
+  <div class="panel panel-default">
                 <!-- Default panel contents -->
 
             
