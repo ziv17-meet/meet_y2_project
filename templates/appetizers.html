@@ -46,9 +46,11 @@
 
   
 <div class="container">
-	<center><h2>appetizers Recipes</h2></center>
+	<center><h2>appetizers</h2></center>
+<div class="col-md-6">
+
 	{% for recipe in appetizers_recipes %}
-	<div class="row 5">
+
 		<div class="thumbnail cool">
 		<a href="{{url_for('specific', id=recipe.id)}}">
 		<img src="{{ recipe.images }}">
@@ -59,12 +61,14 @@
 	</div>
     {% endfor %}
 </div>
-
-
-<div class="col-md-8">
 </div>
+
+
+<div class="col-md-8"></div>
 <div class="col-md-4">
+
 <form action='POST'>
+<div class="special">
 	<div class="panel panel-default">
                 <!-- Default panel contents -->
 
@@ -74,8 +78,7 @@
                     <li class="list-group-item">
                         suggar free
                         <div class="material-switch pull-right">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                            <input id="someSwitchOptionPrimary" name="special" type="checkbox" value="suggar_free"/>
                         </div>
                     </li>
                 </ul>
@@ -83,28 +86,28 @@
                     <li class="list-group-item">
                         glutten free
                         <div class="material-switch pull-right">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                            <input id="someSwitchOptionPrimary" name="special" type="checkbox" value="glutten_free"/>
                         </div>
                     </li>
                 </ul>
                   <ul class="list-group">
                     <li class="list-group-item">
-                        vigen
+                        viggen
                         <div class="material-switch pull-right">
-                            <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                            <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                            <input id="someSwitchOptionPrimary" name="special" type="checkbox" value="viggen"/>
                         </div>
                     </li>
                 </ul>
               </div>
+<input type="submit" value="Submit">
+
+	</div>
 </div>
-          </div>
-        </a>
+</form>
+
       </div>
     </div>
   </div>
-</form>
 </div>
 
 </body>

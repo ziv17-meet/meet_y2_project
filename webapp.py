@@ -71,6 +71,26 @@ def main_dish():
 def appetizers():
 	appetizers_recipes = session.query(Recipes).filter_by(category="appetizers").all()
 	return render_template("appetizers.html", appetizers_recipes=appetizers_recipes)
+	if request.method == 'POST':
+		special=request.form['special']
+		rec = Recipes(special=special)
+		session.add(rec)
+		session.commit()
+		if special == 'suggar_free':
+			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
+			return render_template("appetizers.html", filter_suggar=filter_suggar)
+		if special == 'glutten_free':
+			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
+			return render_template("appetizers.html", filter_glutten=filter_glutten)
+		if special == 'viggen':
+			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
+			return render_template("appetizers.html", filter_viggen=filter_viggen)
+		else:
+			return render_template("appetizers.html")
+	else:
+		return render_template("appetizers.html")
+
+
 
 @app.route("/specific/<int:id>/")
 def specific(id):
