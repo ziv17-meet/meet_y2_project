@@ -4,7 +4,7 @@ from wtforms import *
 from flask_wtf import Form
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-import hashlib
+#import hashlib
 import os
 
 
@@ -81,12 +81,35 @@ def specific(id):
 			rec = Recipes(comments=comments)
 			session.add(rec)
 			session.commit()
-			return render_template("specific.html", rec=rec)
+			return redirect("specific", rec=rec)
 
 	else:
 		return render_template("upload.html")
 
+@app.route("/upload", methods = ['GET', 'POST']  )
+def upload():
 
+	if request.method == 'POST':
+			category=request.form['category']
+			ingredients=request.form['ingredients']
+			special=request.form['special']
+			instructors=request.form['instructors']
+			caption=request.form['caption']
+
+
+			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption, special=special)
+			session.add(rec)
+			session.commit()
+			if category == 'dessert':
+				return redirect("desserts")
+			if category == 'main_dish':
+				return redirect("main_dish")
+			if category == 'appetizers':
+				return redirect("appetizers")
+			else:
+				return render_template("upload.html")
+	else:
+		return render_template("upload.html")
 @app.route("/desserts", methods = ['GET', 'POST'])
 def desserts():
 	desserts_recipes = session.query(Recipes).filter_by(category="dessert").all()
@@ -116,30 +139,7 @@ def desserts():
 		#problem = session.query(Recipes).filter_by(special=specialty).all()
 #	return render_template("desserts.html", problem=problem)
 
-@app.route("/upload", methods = ['GET', 'POST']  )
-def upload():
 
-	if request.method == 'POST':
-			category=request.form['category']
-			ingredients=request.form['ingredients']
-			special=request.form['special']
-			instructors=request.form['instructors']
-			caption=request.form['caption']
-
-
-			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption, special=special)
-			session.add(rec)
-			session.commit()
-			if category == 'dessert':
-				return redirect("desserts")
-			if category == 'main_dish':
-				return redirect("main_dish")
-			if category == 'appetizers':
-				return redirect("appetizers")
-			else:
-				return render_template("upload.html")
-	else:
-		return render_template("upload.html")
 
 @app.route("/pancake")
 def pancake():
