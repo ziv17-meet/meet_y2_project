@@ -2,8 +2,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from wtforms import *
 from flask_wtf import Form
-from flask_sqlalchemy import SQLAlchemy
-from werkzeug.utils import secure_filename
+#from flask_sqlalchemy import SQLAlchemy
+#from werkzeug.utils import secure_filename
 #import hashlib
 import os
 
@@ -27,7 +27,7 @@ session = DBSession()
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'OASIUFHASIH087Y*&^(*&^OSIHUFD'
 
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 
 @app.route("/")
 def show_homepage():
