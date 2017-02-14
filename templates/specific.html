@@ -38,6 +38,7 @@
     </ul>
   </div>
 </nav>
+{% for rec in filter %}
 
 {% for rec in rec %}
    
@@ -59,6 +60,7 @@
     <li>{{ rec.instructors }}</li>
   </ul>
 </div>
+{% endfor %}
 {% endfor %}
 
 <form action="{{ url_for('specific', id=id) }}" method = 'post'>
