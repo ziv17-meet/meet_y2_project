@@ -48,47 +48,71 @@ def main_dish():
 	main_dish_recipes = session.query(Recipes).filter_by(category="main_dish").all()
 	return render_template("main_dish.html", main_dish_recipes=main_dish_recipes)
 
-	if request.method == 'POST':
-
-		special=request.form['special']
-
-		if special == 'suggar_free':
-			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
-			return render_template("main_dish.html", filter_suggar=filter_suggar)
-		if special == 'glutten_free':
-			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
-			return render_template("main_dish.html", filter_glutten=filter_glutten)
-		if special == 'viggen':
-			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
-			return render_template("main_dish.html", filter_viggen=filter_viggen)
-		else:
-			return render_template("main_dish.html")
-	else:
-		return render_template("main_dish.html")
-
+#	if request.method == 'POST':
+#		special=request.form['special']
+#		rec = Recipes(special=special)
+#		session.add(rec)
+#		session.commit()
+#		if special == 'suggar_free':
+#			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
+#			return redirect("main_dish", filter_suggar=filter)
+#		if special == 'glutten_free':
+#			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
+#			return redirect("main_dish", filter_glutten=filter)
+#		if special == 'viggen':
+#			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
+#			return redirect("main_dish", filter_viggen=filter)
+#		if special == 'suggar_free' and 'glutten_free':
+#			filter_suggar_free_glutten_free = session.query(Recipes).filter_by(special="suggar_free glutten_free").all()
+#			return redirect("main_dish", filter_suggar_free_glutten_free=filter)
+#		if special == 'viggen' and 'glutten_free':
+#			filter_viggen_glutten_free = session.query(Recipes).filter_by(special="viggen glutten_free").all()
+#			return redirect("main_dish", filter_viggen_glutten_free=filter_viggen_glutten_free)
+#		if special == 'viggen'and 'suggar_free':
+#			filter_viggen_suggar_free = session.query(Recipes).filter_by(special="viggen suggar_free").all()
+#			return redirect("main_dish", filter_viggen_suggar_free=filter)
+#		if special == 'viggen'and 'suggar_free' and 'glutten_free':
+#			filter_viggen_suggar_free_glutten_free = session.query(Recipes).filter_by(special="viggen suggar_free glutten_free").all()
+#			return redirect("main_dish", filter_viggen_suggar_free_glutten_free=filter)
+#		else:
+#			return render_template("main_dish.html")
+#	else:
+#		return render_template("main_dish.html")
 
 @app.route("/appetizers")
 def appetizers():
 	appetizers_recipes = session.query(Recipes).filter_by(category="appetizers").all()
 	return render_template("appetizers.html", appetizers_recipes=appetizers_recipes)
-	if request.method == 'POST':
-		special=request.form['special']
-		rec = Recipes(special=special)
-		session.add(rec)
-		session.commit()
-		if special == 'suggar_free':
-			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
-			return render_template("appetizers.html", filter_suggar=filter_suggar)
-		if special == 'glutten_free':
-			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
-			return render_template("appetizers.html", filter_glutten=filter_glutten)
-		if special == 'viggen':
-			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
-			return render_template("appetizers.html", filter_viggen=filter_viggen)
-		else:
-			return render_template("appetizers.html")
-	else:
-		return render_template("appetizers.html")
+#	if request.method == 'POST':
+#		special=request.form['special']
+#		rec = Recipes(special=special)
+#		session.add(rec)
+#		session.commit()
+#		if special == 'suggar_free':
+#			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
+#			return redirect("appetizers", filter_suggar=filter)
+#		if special == 'glutten_free':
+#			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
+#			return redirect("appetizers", filter_glutten=filter)
+#		if special == 'viggen':
+#			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
+#			return redirect("appetizers", filter_viggen=filter)
+#		if special == 'suggar_free' and 'glutten_free':
+#			filter_suggar_free_glutten_free = session.query(Recipes).filter_by(special="suggar_free glutten_free").all()
+#			return redirect("appetizers", filter_suggar_free_glutten_free=filter)
+#		if special == 'viggen' and 'glutten_free':
+#			filter_viggen_glutten_free = session.query(Recipes).filter_by(special="viggen glutten_free").all()
+#			return redirect("appetizers", filter_viggen_glutten_free=filter_viggen_glutten_free)
+#		if special == 'viggen'and 'suggar_free':
+#			filter_viggen_suggar_free = session.query(Recipes).filter_by(special="viggen suggar_free").all()
+#			return redirect("appetizers", filter_viggen_suggar_free=filter)
+#		if special == 'viggen'and 'suggar_free' and 'glutten_free':
+#			filter_viggen_suggar_free_glutten_free = session.query(Recipes).filter_by(special="viggen suggar_free glutten_free").all()
+#			return redirect("appetizers", filter_viggen_suggar_free_glutten_free=filter)
+#		else:
+#			return render_template("appetizers.html")
+#	else:
+#		return render_template("appetizers.html")
 
 
 
@@ -134,36 +158,36 @@ def upload():
 def desserts():
 	desserts_recipes = session.query(Recipes).filter_by(category="dessert").all()
 	return render_template("desserts.html", desserts_recipes=desserts_recipes)
-	if request.method == 'POST':
-		special=request.form['special']
-		rec = Recipes(special=special)
-		session.add(rec)
-		session.commit()
-		if special == 'suggar_free':
-			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
-			return redirect("desserts.html", filter_suggar=filter)
-		if special == 'glutten_free':
-			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
-			return redirect("desserts.html", filter_glutten=filter)
-		if special == 'viggen':
-			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
-			return redirect("desserts.html", filter_viggen=filter)
-		if special == 'suggar_free' and 'glutten_free':
-			filter_suggar_free_glutten_free = session.query(Recipes).filter_by(special="suggar_free glutten_free").all()
-			return redirect("desserts.html", filter_suggar_free_glutten_free=filter)
-		if special == 'viggen' and 'glutten_free':
-			filter_viggen_glutten_free = session.query(Recipes).filter_by(special="viggen glutten_free").all()
-			return redirect("desserts.html", filter_viggen_glutten_free=filter_viggen_glutten_free)
-		if special == 'viggen'and 'suggar_free':
-			filter_viggen_suggar_free = session.query(Recipes).filter_by(special="viggen suggar_free").all()
-			return redirect("desserts.html", filter_viggen_suggar_free=filter)
-		if special == 'viggen'and 'suggar_free' and 'glutten_free':
-			filter_viggen_suggar_free_glutten_free = session.query(Recipes).filter_by(special="viggen suggar_free glutten_free").all()
-			return redirect("desserts.html", filter_viggen_suggar_free_glutten_free=filter)
-		else:
-			return render_template("desserts.html")
-	else:
-		return render_template("desserts.html")
+#	if request.method == 'POST':
+#		special=request.form['special']
+#		rec = Recipes(special=special)
+#		session.add(rec)
+#		session.commit()
+#		if special == 'suggar_free':
+#			filter_suggar = session.query(Recipes).filter_by(special="suggar_free").all()
+#			return redirect("desserts", filter_suggar=filter)
+#		if special == 'glutten_free':
+#			filter_glutten = session.query(Recipes).filter_by(special="glutten_free").all()
+#			return redirect("desserts", filter_glutten=filter)
+#		if special == 'viggen':
+#			filter_viggen = session.query(Recipes).filter_by(special="viggen").all()
+#			return redirect("desserts", filter_viggen=filter)
+#		if special == 'suggar_free' and 'glutten_free':
+#			filter_suggar_free_glutten_free = session.query(Recipes).filter_by(special="suggar_free glutten_free").all()
+#			return redirect("desserts", filter_suggar_free_glutten_free=filter)
+#		if special == 'viggen' and 'glutten_free':
+#			filter_viggen_glutten_free = session.query(Recipes).filter_by(special="viggen glutten_free").all()
+#			return redirect("desserts", filter_viggen_glutten_free=filter_viggen_glutten_free)
+#		if special == 'viggen'and 'suggar_free':
+#			filter_viggen_suggar_free = session.query(Recipes).filter_by(special="viggen suggar_free").all()
+#			return redirect("desserts", filter_viggen_suggar_free=filter)
+#		if special == 'viggen'and 'suggar_free' and 'glutten_free':
+#			filter_viggen_suggar_free_glutten_free = session.query(Recipes).filter_by(special="viggen suggar_free glutten_free").all()
+#			return redirect("desserts", filter_viggen_suggar_free_glutten_free=filter)
+#		else:
+#			return render_template("desserts.html")
+#	else:
+#		return render_template("desserts.html")
 
 
 #@app.route("/desserts/<string:specialty>/")
