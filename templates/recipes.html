@@ -6,21 +6,26 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<title> inbar ha MALKA </title>
+<link href="//fonts.googleapis.com/css?family=Sofia' rel='stylesheet">
+	<title> Food </title>
 
   <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 100%;
-      height: 10%;
+      height: 80%;
       margin: auto;
 
   }
+
+
 
   </style>
 
 </head>
 <body>
+
+
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -28,33 +33,32 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>    
-      <a class="navbar-brand" href="#">WebSiteName</a>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand " href="#">FOOD</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-    </div>
-<div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav">
-      <li><a href="{{url_for('show_homepage')}}">Home</a></li>
-  <li><a href="{{url_for('about_us')}}">about us</a></li>
-      <li><a href="{{url_for('upload')}}">upload</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">catagories<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="{{url_for('desserts')}}">desserts</a></li>
-          <li><a href="{{url_for('main_dish')}}">main dishes</a></li>
-          <li><a href="{{url_for('appetizers')}}">appetizers</a></li>
-        </ul>
-      </li>
+      <ul class="nav navbar-nav">
+        <li><a href="{{url_for('show_homepage')}}">Home</a></li>
+        
+        <li><a href="{{url_for('about_us')}}">about us</a></li>
+        <li><a href="{{url_for('upload')}}">upload</a></li>
+    <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">category <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{url_for('desserts')}}">desserts</a></li>
+            <li><a href="{{url_for('main_dish')}}">main dish</a></li>
+            <li><a href="{{url_for('appetizers')}}">appetizers</a></li>
+          </ul>
+        </li>
+      </ul>
 
-    </ul>
+    </div>
   </div>
 </nav>
-  
-
 
 
 <div class="container">
-  <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
 

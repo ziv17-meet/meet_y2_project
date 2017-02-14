@@ -20,21 +20,30 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">FOOD</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand " href="#">FOOD</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li><a href="{{url_for('show_homepage')}}">Home</a></li>
-	<li><a href="{{url_for('about_us')}}">about us</a></li>
-      <li><a href="{{url_for('upload')}}">upload</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">catagories<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="{{url_for('desserts')}}">desserts</a></li>
-          <li><a href="#">main dishes</a></li>
-          <li><a href="#">appetizers</a></li>
-        </ul>
-      </li>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a href="{{url_for('show_homepage')}}">Home</a></li>
+        
+        <li><a href="{{url_for('about_us')}}">about us</a></li>
+        <li><a href="{{url_for('upload')}}">upload</a></li>
+    <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">category <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{url_for('desserts')}}">desserts</a></li>
+            <li><a href="{{url_for('main_dish')}}">main dish</a></li>
+            <li><a href="{{url_for('appetizers')}}">appetizers</a></li>
+          </ul>
+        </li>
+      </ul>
 
-    </ul>
+    </div>
   </div>
 </nav>
 <br>

@@ -136,12 +136,12 @@ def upload():
 	if request.method == 'POST':
 			category=request.form['category']
 			ingredients=request.form['ingredients']
-			special=request.form['special']
+#			special=request.form['special']
 			instructors=request.form['instructors']
 			caption=request.form['caption']
 
 
-			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption, special=special)
+			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption)
 			session.add(rec)
 			session.commit()
 			if category == 'dessert':
