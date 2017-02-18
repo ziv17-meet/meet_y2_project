@@ -14,7 +14,7 @@ class Recipes(Base):
 	id = Column(Integer, primary_key=True)
 	category = Column(String)
 	ingredients = Column(String)
-	images = Column(String)
+#	image = Column(String)
 	instructors = Column(String)
 #	special = Column(String)
 	comments = Column(String)

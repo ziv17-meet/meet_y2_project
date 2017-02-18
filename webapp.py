@@ -31,7 +31,7 @@ app.secret_key = 'OASIUFHASIH087Y*&^(*&^OSIHUFD'
 
 @app.route("/")
 def show_homepage():
-	
+		
 
 
 
@@ -83,6 +83,9 @@ def main_dish():
 def appetizers():
 	appetizers_recipes = session.query(Recipes).filter_by(category="appetizers").all()
 	return render_template("appetizers.html", appetizers_recipes=appetizers_recipes)
+
+#		session.add(rec)
+#		session.commit()
 #	if request.method == 'POST':
 #		special=request.form['special']
 #		rec = Recipes(special=special)
@@ -140,6 +143,9 @@ def upload():
 			instructors=request.form['instructors']
 			caption=request.form['caption']
 
+	#		image=request.form['image']
+
+			
 
 			rec = Recipes(category=category, ingredients=ingredients, instructors=instructors, caption=caption)
 			session.add(rec)
